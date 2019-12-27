@@ -1,7 +1,6 @@
 # pohja
 
-Pohja kevään 2020 harjoitustöiden GIT-repoilla
+Pohja kevään 2020 harjoitustöiden GIT-repoille
 
-Käyttö:
+Lue käyttöohjeet TIMistä: <>
 
-1. Ota oikeasta ylänurkasta Fork
