@@ -65,7 +65,7 @@
                               <Insets bottom="5.0" top="5.0" />
                            </padding>
                         </Label>
-                        <TextField alignment="CENTER" onKeyReleased="#handleSearchCrit" promptText="Search">
+                        <TextField alignment="CENTER" promptText="Search">
                            <font>
                               <Font size="14.0" />
                            </font>
