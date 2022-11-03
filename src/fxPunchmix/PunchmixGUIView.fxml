@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import fi.jyu.mit.fxgui.ListChooser?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="547.0" prefWidth="849.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxPunchmix.PunchmixGUIController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+                  <MenuItem mnemonicParsing="false" text="Save" />
+                  <Menu mnemonicParsing="false" text="New...">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Drink" />
+                      <MenuItem mnemonicParsing="false" text="Ingredients" />
+                    </items>
+                  </Menu>
+                <MenuItem mnemonicParsing="false" text="Print" />
+                  <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Drink" />
+                  <MenuItem mnemonicParsing="false" text="Ingredients" />
+                  <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <SplitPane dividerPositions="0.31286894923258557, 0.7154663518299882" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <items>
+            <BorderPane prefHeight="520.0" prefWidth="378.0">
+               <top>
+                  <VBox prefHeight="53.0" prefWidth="262.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="275.0" text="Drinks">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </Label>
+                        <TextField alignment="CENTER" onKeyReleased="#handleSearchCrit" promptText="Search">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </VBox>
+               </top>
+               <center>
+                  <ListChooser prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0">
+               <center>
+               	  <ScrollPane fitToWidth="true" pannable="true" BorderPane.alignment="CENTER">
+                  <TableView prefHeight="439.0" prefWidth="333.0" BorderPane.alignment="CENTER">
+                    <columns>
+                      <TableColumn prefWidth="212.0" text="Ingredient" />
+                      <TableColumn minWidth="8.0" prefWidth="61.0" text="Amount" />
+                      <TableColumn minWidth="8.0" prefWidth="61.0" text="Unit" />
+                    </columns>
+                  </TableView>
+                  </ScrollPane>
+               </center>
+               <top>
+                  <VBox prefHeight="62.0" prefWidth="335.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="335.0" text="Ingredients">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <TextField alignment="CENTER" editable="false" prefHeight="13.0" prefWidth="335.0" promptText="Drink">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </VBox>
+               </top>  
+               <bottom>
+               		<Label fx:id="labelError" alignment="CENTER" maxWidth="1.8" BorderPane.alignment="CENTER" />
+               </bottom>             
+            </BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0">
+               <top>
+                  <Label text="Info" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
+                  </Label>
+               </top>
+               <center>
+                  <GridPane prefHeight="467.0" prefWidth="126.0" BorderPane.alignment="CENTER">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="ALWAYS" maxWidth="114.0" minWidth="10.0" prefWidth="111.0" />
+                      <ColumnConstraints hgrow="ALWAYS" maxWidth="159.0" minWidth="10.0" prefWidth="127.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label alignment="CENTER" text="Euro / Litter =" GridPane.rowIndex="2" />
+                        <Label text="Total Volume =" GridPane.rowIndex="1" />
+                        <Label alignment="CENTER" text="Price € =" />
+                        <Label text="Vols % =" GridPane.rowIndex="3" />
+                        <TextField editable="false" GridPane.columnIndex="1" />
+                        <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets left="10.0" top="10.0" />
+                     </opaqueInsets>
+                  </GridPane>
+               </center>
+            </BorderPane>
+        </items>
+      </SplitPane>
+   </center>
+</BorderPane>
