@@ -13,7 +13,7 @@ public class PunchmixMain extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("PunchmixGUIView.fxml"));
-			Scene scene = new Scene(root,400,400);
+			Scene scene = new Scene(root,850,400);
 			scene.getStylesheets().add(getClass().getResource("punchmix.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
