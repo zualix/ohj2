@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import fi.jyu.mit.fxgui.ListChooser?>
+<?import fi.jyu.mit.fxgui.StringGrid?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
@@ -8,7 +9,6 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
@@ -24,7 +24,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-                  <MenuItem mnemonicParsing="false" text="Save" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleSave" text="Save" />
                   <Menu mnemonicParsing="false" text="New...">
                     <items>
                       <MenuItem mnemonicParsing="false" text="Drink" />
@@ -74,22 +74,18 @@
                   </VBox>
                </top>
                <center>
-                  <ListChooser prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                  <ListChooser prefHeight="200.0" prefWidth="200.0" rivit="Moscovan Muuli&#10;Vodka Redbull&#10;Vesi&#10;Irish Coffee&#10;Kelkka&#10;" BorderPane.alignment="CENTER" />
                </center>
             </BorderPane>
             <BorderPane prefHeight="200.0" prefWidth="200.0">
                <center>
                	  <ScrollPane fitToWidth="true" pannable="true" BorderPane.alignment="CENTER">
-                  <TableView prefHeight="439.0" prefWidth="333.0" BorderPane.alignment="CENTER">
-                    <columns>
-                      <TableColumn editable="false" prefWidth="212.0" text="Ingredient" />
-                      <TableColumn editable="false" minWidth="8.0" prefWidth="61.0" text="Amount" />
-                      <TableColumn editable="false" minWidth="8.0" prefWidth="61.0" text="Unit" />
-                    </columns>
-                        <columnResizePolicy>
-                           <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                        </columnResizePolicy>
-                  </TableView>
+                     <content>
+                        <StringGrid editable="true" rivit="Ingridient|Amount|Unit&#10;Vodka|4|cl&#10;Ginger ale|1,8|dl">
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy></StringGrid>
+                     </content>
                   </ScrollPane>
                </center>
                <top>
