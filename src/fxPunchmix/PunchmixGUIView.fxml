@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="547.0" prefWidth="849.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxPunchmix.PunchmixGUIController">
+<BorderPane prefHeight="547.0" prefWidth="849.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxPunchmix.PunchmixGUIController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -51,7 +51,7 @@
       </MenuBar>
    </top>
    <center>
-      <SplitPane dividerPositions="0.31286894923258557, 0.7154663518299882" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <SplitPane dividerPositions="0.3105076741440378, 0.7154663518299882" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <items>
             <BorderPane prefHeight="520.0" prefWidth="378.0">
                <top>
@@ -82,10 +82,13 @@
                	  <ScrollPane fitToWidth="true" pannable="true" BorderPane.alignment="CENTER">
                   <TableView prefHeight="439.0" prefWidth="333.0" BorderPane.alignment="CENTER">
                     <columns>
-                      <TableColumn prefWidth="212.0" text="Ingredient" />
-                      <TableColumn minWidth="8.0" prefWidth="61.0" text="Amount" />
-                      <TableColumn minWidth="8.0" prefWidth="61.0" text="Unit" />
+                      <TableColumn editable="false" prefWidth="212.0" text="Ingredient" />
+                      <TableColumn editable="false" minWidth="8.0" prefWidth="61.0" text="Amount" />
+                      <TableColumn editable="false" minWidth="8.0" prefWidth="61.0" text="Unit" />
                     </columns>
+                        <columnResizePolicy>
+                           <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                        </columnResizePolicy>
                   </TableView>
                   </ScrollPane>
                </center>
