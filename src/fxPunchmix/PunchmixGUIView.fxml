@@ -27,24 +27,24 @@
                   <MenuItem mnemonicParsing="false" onAction="#handleSave" text="Save" />
                   <Menu mnemonicParsing="false" text="New...">
                     <items>
-                      <MenuItem mnemonicParsing="false" text="Drink" />
-                      <MenuItem mnemonicParsing="false" text="Ingredients" />
+                      <MenuItem mnemonicParsing="false" onAction="#handleNewDrink" text="Drink" />
+                      <MenuItem mnemonicParsing="false" onAction="#handleNewIng" text="Ingredients" />
                     </items>
                   </Menu>
-                <MenuItem mnemonicParsing="false" text="Print" />
-                  <MenuItem mnemonicParsing="false" text="Close" />
+                <MenuItem mnemonicParsing="false" onAction="#handlePrint" text="Print" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleClose" text="Close" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#handleEditDrink" text="Drink" />
-                  <MenuItem mnemonicParsing="false" text="Ingredients" />
-                  <MenuItem mnemonicParsing="false" text="Delete" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleEditIng" text="Ingredients" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleDel" text="Delete" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem mnemonicParsing="false" onAction="#handleAbout" text="About" />
             </items>
           </Menu>
         </menus>
@@ -65,7 +65,7 @@
                               <Insets bottom="5.0" top="5.0" />
                            </padding>
                         </Label>
-                        <TextField alignment="CENTER" promptText="Search">
+                        <TextField alignment="CENTER" onKeyReleased="#handleSearch" promptText="Search">
                            <font>
                               <Font size="14.0" />
                            </font>
