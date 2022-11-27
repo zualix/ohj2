@@ -15,24 +15,24 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="415.0" prefWidth="404.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="415.0" prefWidth="404.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxPunchmix.DrinkDialogController">
    <top>
       <MenuBar prefHeight="11.0" prefWidth="404.0" BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="Save" />
-                  <MenuItem mnemonicParsing="false" text="Close" />
+              <MenuItem mnemonicParsing="false" onAction="#handleSave" text="Save" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleClose" text="Close" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+              <MenuItem mnemonicParsing="false" onAction="#handleDelete" text="Delete" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem mnemonicParsing="false" onAction="#handleAbout" text="About" />
             </items>
           </Menu>
         </menus>
@@ -64,14 +64,20 @@
       </VBox>
    </center>
    <bottom>
-      <HBox alignment="CENTER_LEFT" cache="true" prefHeight="44.0" prefWidth="404.0" spacing="10.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" cache="true" prefHeight="44.0" prefWidth="404.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <Button alignment="CENTER" mnemonicParsing="false" text="Save" />
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="56.0" text="Delete" textAlignment="CENTER" />
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleSave" text="Save" textAlignment="CENTER">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets></Button>
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleDelete" prefHeight="25.0" prefWidth="56.0" text="Delete" textAlignment="CENTER" />
          </children>
          <padding>
             <Insets left="5.0" right="5.0" />
          </padding>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
       </HBox>
    </bottom>
 </BorderPane>

@@ -1,8 +1,16 @@
 package fxPunchmix;
 
+import java.io.IOException;
+
 import fi.jyu.mit.fxgui.Dialogs;
 import fi.jyu.mit.fxgui.ModalController;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 
 public class PunchmixGUIController {
@@ -13,8 +21,9 @@ public class PunchmixGUIController {
     
     @FXML
     void handleEditDrink() {
-        ModalController.showModal(PunchmixGUIController.class.getResource("DrinkDialogView.fxml"), "Drink", null, "");
+        editDrink();
     }
+    
     @FXML
     void handleAbout() {
         about();
@@ -32,17 +41,17 @@ public class PunchmixGUIController {
 
     @FXML
     void handleEditIng() {
-        ModalController.showModal(PunchmixGUIController.class.getResource("IngDialogView.fxml"), "Ingredient", null, "");
+        editIng();
     }
 
     @FXML
     void handleNewDrink() {
-        ModalController.showModal(PunchmixGUIController.class.getResource("DrinkDialogView.fxml"), "Drink", null, "");
+        newDrink();
     }
 
     @FXML
     void handleNewIng() {
-        ModalController.showModal(PunchmixGUIController.class.getResource("NewIngDialogView.fxml"), "Ingredient", null, "");
+        newIng();
     }
 
     @FXML
@@ -55,7 +64,7 @@ public class PunchmixGUIController {
         search();
     }
     
-    //===================================== 
+    //===========================================================================================================
     
     private void save() {
         Dialogs.showMessageDialog("Should save! Not done yet!");
@@ -81,5 +90,64 @@ public class PunchmixGUIController {
         Dialogs.showMessageDialog("Not done yet!");
     }
     
+    private void newIng() {
+        //ModalController.showModal(PunchmixGUIController.class.getResource("NewIngDialogView.fxml"), "New Ingredient", null, "");
+    	
+    	Stage secStage = new Stage();
+    	try {
+			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("NewIngDialogView.fxml"));
+			Scene scene = new Scene(root,400,400);
+			scene.getStylesheets().add(getClass().getResource("punchmix.css").toExternalForm());
+			secStage.setScene(scene);
+			secStage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+    }
+    
+    private void newDrink() {
+        //ModalController.showModal(PunchmixGUIController.class.getResource("DrinkDialogView.fxml"), "Drink", null, "");
+        
+    	Stage secStage = new Stage();
+    	try {
+			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("DrinkDialogView.fxml"));
+			Scene scene = new Scene(root,400,400);
+			scene.getStylesheets().add(getClass().getResource("punchmix.css").toExternalForm());
+			secStage.setScene(scene);
+			secStage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+        
+
+    }
+    
+    private void editIng() {
+        //ModalController.showModal(PunchmixGUIController.class.getResource("IngDialogView.fxml"), "Ingredient", null, "");
+    	Stage secStage = new Stage();
+    	try {
+			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("IngDialogView.fxml"));
+			Scene scene = new Scene(root,400,400);
+			scene.getStylesheets().add(getClass().getResource("punchmix.css").toExternalForm());
+			secStage.setScene(scene);
+			secStage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+    }
+    
+    private void editDrink() {
+        //ModalController.showModal(PunchmixGUIController.class.getResource("DrinkDialogView.fxml"), "Drink", null, "");
+    	Stage secStage = new Stage();
+    	try {
+			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("DrinkDialogView.fxml"));
+			Scene scene = new Scene(root,400,400);
+			scene.getStylesheets().add(getClass().getResource("punchmix.css").toExternalForm());
+			secStage.setScene(scene);
+			secStage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+    }
     
 }
