@@ -66,9 +66,9 @@ public class IngredientsList implements Iterable<Ingredient> {
             while (( row = fi.readLine()) != null ) {
                 row = row.trim();
                 if ("".equals(row) || row.charAt(0) == ';') continue;
-                Drink drink = new Drink();
-                drink.parse(row);
-                addMix(drink);
+                Ingredient ing= new Ingredient();
+                ing.parse(row);
+                addMix(ing);
             }
             chanced = false;
         } catch ( FileNotFoundException e ) {

@@ -13,7 +13,7 @@ public class MixList implements  Iterable<Mix> {
     private final Collection<Mix> items = new ArrayList<Mix>();
     
     
-    public Mixes() {
+    public void Mixes() {
         //TODO
     }
     
