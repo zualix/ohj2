@@ -1,11 +1,9 @@
 package fxPunchmix;
 	
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.stage.Stage;
 import punchmix.Punchmix;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.fxml.FXMLLoader;
 

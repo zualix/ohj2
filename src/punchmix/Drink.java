@@ -3,6 +3,7 @@
  */
 package punchmix;
 
+import java.io.OutputStream;
 import java.io.PrintStream;
 
 import fi.jyu.mit.ohj2.Mjonot;
@@ -35,6 +36,11 @@ public class Drink {
         out.println("Euro per Litter " + String.format("%4.2f", eurLitter));
         out.println("Vols % " + String.format("%4.2f", vols)+ "\n");
     }
+    
+    public void print(OutputStream os) {
+    	print(new PrintStream(os));
+    }
+    
     
     /**
      * @return Drinks name
@@ -71,9 +77,9 @@ public class Drink {
      * </pre>
      */
     public int recIdd() {
-        this.idd = nextNum;
+        idd = nextNum;
         nextNum++;
-        return this.idd;
+        return idd;
     }
     
     
