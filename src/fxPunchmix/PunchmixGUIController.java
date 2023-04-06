@@ -127,8 +127,15 @@ public class PunchmixGUIController implements Initializable{
     }
     
     
-    private void save() {
-        Dialogs.showMessageDialog("Should save! Not done yet!");
+    private String save() {
+        //Dialogs.showMessageDialog("Should save! Not done yet!");
+        try {
+            punch.save();
+            return null;
+        } catch (SailoException ex) {
+            Dialogs.showMessageDialog("Problem With Saving! " + ex.getMessage());
+            return ex.getMessage();
+        }
     }
    
     public boolean canClose() {
@@ -153,11 +160,14 @@ public class PunchmixGUIController implements Initializable{
     protected void showDrink() {
     	drinkPos = chooserDrink.getSelectedObject();
     	
-    	if (drinkPos == null) return;
+    	if (drinkPos == null) {
+    	    areaDrink.clear();
+    	    return;
+    	}
     	
     	areaDrink.setText("");
     	try (PrintStream os = TextAreaOutputStream.getTextPrintStream(areaDrink)) {
-    		drinkPos.print(os);
+    		print(os, drinkPos);
     	}
     }
     
@@ -181,6 +191,8 @@ public class PunchmixGUIController implements Initializable{
     }
     
     private void search(int idd) {
+        int k = 0;
+        
     	chooserDrink.clear();
     	
     	int index = 0;
@@ -191,7 +203,6 @@ public class PunchmixGUIController implements Initializable{
     	}
     	chooserDrink.setSelectedIndex(index);
     }
-    
     
     
     protected void newDrinkEx() {
