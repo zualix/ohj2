@@ -24,8 +24,9 @@ public class DrinkList implements Iterable<Drink> {
     private boolean chanced = false;
     private int lkm = 0;
     private String fileFullName = "";
-    private String fileName = "drinks";
+    private String fileBaseName = "drinks";
     private Drink item[] = new Drink[MAX_DRINKS];
+    
     
     public DrinkList() {
         
@@ -62,8 +63,8 @@ public class DrinkList implements Iterable<Drink> {
      * @throws SailoException
      */
     public void readFromFile(String file) throws SailoException {
-        setFileName(file);
-        try ( BufferedReader fi = new BufferedReader(new FileReader(getFileName()))) {
+        setFileBaseName(file);
+        try ( BufferedReader fi = new BufferedReader(new FileReader(getFileBaseName()))) {
             fileFullName = fi.readLine();
             if ( fileFullName == null ) throw new SailoException("Drink list not found");
             String row = fi.readLine();
@@ -78,7 +79,7 @@ public class DrinkList implements Iterable<Drink> {
             }
             chanced = false;
         } catch ( FileNotFoundException e ) {
-            throw new SailoException("File " + getFileName() + " not opening");
+            throw new SailoException("File " + getFileBaseName() + " not opening");
         } catch ( IOException e) {
             throw new SailoException("Problem with file " + e.getMessage());        
         }
@@ -88,7 +89,7 @@ public class DrinkList implements Iterable<Drink> {
      * @throws SailoException
      */
     public void readFromFile() throws SailoException {
-        readFromFile(getFileName());
+        readFromFile(getFileBaseName());
     }
     
     /**
@@ -102,7 +103,7 @@ public class DrinkList implements Iterable<Drink> {
         fbak.delete();
         ffile.renameTo(fbak);
         
-        try ( PrintWriter fo = new PrintWriter(new FileWriter(ffile.getCanonicalPath()))){
+        try ( PrintWriter fo = new PrintWriter(new FileWriter(ffile.getCanonicalPath())) ){
             fo.println(getFullName());
             fo.println(item.length);
             for (Drink drink : this) {
@@ -132,20 +133,20 @@ public class DrinkList implements Iterable<Drink> {
         return lkm;
     }
     
-    public String getFileName() {
-        return fileName;
+    public String getFileBaseName() {
+        return fileBaseName;
     }
     
-    public void setFileName(String name) {
-        fileName = name;
+    public void setFileBaseName(String name) {
+        fileBaseName = name;
     }
     
     public String getFile() {
-        return getFileName() + ".dat" ;
+        return getFileBaseName() + ".dat" ;
     }
     
     public String getBakName() {
-        return fileName + ".bak";
+        return fileBaseName + ".bak";
     }
     
     
@@ -175,7 +176,7 @@ public class DrinkList implements Iterable<Drink> {
         return new DrinkListIterator();
     }
     
-    public Collection<Drink> find(String searchCrit, int i) {
+    public Collection<Drink> find(String searchCrit) {
         Collection<Drink> found = new ArrayList<Drink>();
         for (Drink drink : this) {
             found.add(drink);

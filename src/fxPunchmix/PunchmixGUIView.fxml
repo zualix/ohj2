@@ -65,7 +65,7 @@
                               <Insets bottom="5.0" top="5.0" />
                            </padding>
                         </Label>
-                        <TextField alignment="CENTER" onKeyReleased="#handleSearch" promptText="Search">
+                        <TextField fx:id="searcCrit" alignment="CENTER" onKeyReleased="#handleSearch" promptText="Search">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -74,12 +74,12 @@
                   </VBox>
                </top>
                <center>
-                  <ListChooser prefHeight="200.0" prefWidth="200.0" rivit="Moscovan Muuli&#10;Vodka Redbull&#10;Vesi&#10;Irish Coffee&#10;Kelkka&#10;" BorderPane.alignment="CENTER" />
+                  <ListChooser fx:id="chooserDrink" prefHeight="200.0" prefWidth="200.0" rivit="Moscovan Muuli&#10;Vodka Redbull&#10;Vesi&#10;Irish Coffee&#10;Kelkka&#10;" BorderPane.alignment="CENTER" />
                </center>
             </BorderPane>
             <BorderPane prefHeight="200.0" prefWidth="200.0">
                <center>
-               	  <ScrollPane fitToWidth="true" pannable="true" BorderPane.alignment="CENTER">
+               	  <ScrollPane fx:id="panelDrink" fitToWidth="true" pannable="true" BorderPane.alignment="CENTER">
                      <content>
                         <StringGrid editable="true" rivit="Ingridient|Amount|Unit&#10;Vodka|4|cl&#10;Ginger ale|1,8|dl">
                            <columnResizePolicy>

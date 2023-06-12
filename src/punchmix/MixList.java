@@ -8,7 +8,7 @@ import side.SailoException;
 public class MixList implements  Iterable<Mix> {
    
     private boolean chanced = false;
-    private String fileName = "";
+    private String fileBaseName = "";
     
     private final Collection<Mix> items = new ArrayList<Mix>();
     
@@ -54,8 +54,10 @@ public class MixList implements  Iterable<Mix> {
         File ffile = new File(getFileName());
         fbak.delete();
         ffile.renameTo(fbak);
+        fbak.delete();
+        ffile.renameTo(fbak);
         
-        try(PrintWriter fo = new PrintWriter(new FileWriter(ffile.getCanonicalPath()))) {
+        try ( PrintWriter fo = new PrintWriter(new FileWriter(ffile.getCanonicalPath()))) {
             for( Mix mix : this) {
                 fo.println(mix.toString());
             }
@@ -73,19 +75,19 @@ public class MixList implements  Iterable<Mix> {
     }
     
     public void setFileBaseName(String file) {
-        fileName = file;
+        fileBaseName = file;
     }
     
     public String getFileBaseName() {
-        return fileName;
+        return fileBaseName;
     }
     
     public String getFileName() {
-        return fileName + ".dat";
+        return fileBaseName + ".dat";
     }
     
     public String getBakName() {
-        return fileName + ".bak";
+        return fileBaseName + ".bak";
     }
     
     @Override
@@ -100,7 +102,7 @@ public class MixList implements  Iterable<Mix> {
     public List<Mix> giveMixes(int idd) {
         List<Mix> found = new ArrayList<Mix>();
         for (Mix mix : items)
-            if (mix.getIdd() == idd) found.add(mix);
+            if ( mix.getIdd() == idd) found.add(mix);
         return found;
     }
     
