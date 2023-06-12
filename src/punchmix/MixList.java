@@ -54,6 +54,8 @@ public class MixList implements  Iterable<Mix> {
         File ffile = new File(getFileName());
         fbak.delete();
         ffile.renameTo(fbak);
+        fbak.delete();
+        ffile.renameTo(fbak);
         
         try ( PrintWriter fo = new PrintWriter(new FileWriter(ffile.getCanonicalPath()))) {
             for( Mix mix : this) {

@@ -3,6 +3,8 @@ package fxPunchmix;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.net.URL;
+import java.util.Collection;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import fi.jyu.mit.fxgui.Dialogs;
@@ -92,16 +94,14 @@ public class PunchmixGUIController implements Initializable{
 
     @FXML
     void handleSearch() {
-        //search();
-        String crit = searcCrit.getText(); 
-        if ( crit.isEmpty() )
-            showError(null);
-        else
-        	showError("Ei osata vielä hakea : " + crit);
+        if (drinkPos != null)
+            search(drinkPos.getIdd());
 
     }
     
     //===========================================================================================================
+    
+    private String punchName = "mixes";
     private Punchmix punch;
     private Drink drinkPos;
     private TextArea areaDrink = new TextArea();
@@ -126,6 +126,21 @@ public class PunchmixGUIController implements Initializable{
         labelError.getStyleClass().add("err");
     }
     
+    protected String readFromFile(String name) {
+        punchName = name;
+        
+        try {
+            punch.readFromFile(name);
+            search(0);
+            return null;
+        } catch (SailoException e) {
+            search(0);
+            String virhe = e.getMessage(); 
+            if ( virhe != null ) Dialogs.showMessageDialog(virhe);
+            return virhe;
+        }
+
+    }
     
     private String save() {
         //Dialogs.showMessageDialog("Should save! Not done yet!");
@@ -175,36 +190,52 @@ public class PunchmixGUIController implements Initializable{
         os.println("----------------------------------------------");
         drink.print(os);
         os.println("----------------------------------------------");
-
+        try {
+            List<Mix> mixes = punch.giveMixes(drink);
+            for (Mix mix:mixes)
+                mix.print(os);
+        } catch (SailoException ex) {
+            Dialogs.showMessageDialog("Problem getting ingredients" + ex.getMessage());
+        }
     }
     
 
     public void printSelected(TextArea text) {
         try (PrintStream os = TextAreaOutputStream.getTextPrintStream(text)) {
             os.println("Printing all the drinks");
-            for (int i = 0; i < punch.getDrinks(); i++) {
-                Drink drink =  punch.giveDrink(i);
-                print(os, drink);
+            Collection<Drink> drinks = punch.find("", -1);
+            for (Drink drink:drinks) {
+                print(os, drinks);
                 os.println("\n\n");
+                
             }
         }
     }
     
     private void search(int idd) {
-        int k = 0;
-        
-    	chooserDrink.clear();
+        String crit = searcCrit.getText();
+        chooserDrink.clear();
     	
-    	int index = 0;
-    	for (int i = 0; i < punch.getDrinks(); i++) {
-    		Drink drink = punch.giveDrink(i);
-    		if (drink.getIdd() == idd) index = i;
-    		chooserDrink.add(drink.getName(), drink);
+        int index = 0;
+    	Collection<Drink> drinks;    	
+    	try {
+    	    drinks = punch.find(crit);
+    	    int i = 0;
+    	    for (Drink drink:drinks) {
+    	        if (drink.getIdd() == idd) index = i;
+    	        chooserDrink.add(drink.getName(), drink);
+    	        i++;
+    	    }
+    	}catch (SailoException ex) {
+            Dialogs.showMessageDialog("Prombel arose searching drink! " + ex.getMessage());
     	}
     	chooserDrink.setSelectedIndex(index);
     }
     
     
+    /**
+     * Add new drink to list
+     */
     protected void newDrinkEx() {
     	Drink extra = new Drink();
     	extra.recIdd();
@@ -218,6 +249,7 @@ public class PunchmixGUIController implements Initializable{
 		}
     	search(extra.getIdd());
     }
+    
     
     public void setPunch(Punchmix punch){
     	this.punch = punch;

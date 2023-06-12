@@ -48,8 +48,8 @@ public class Punchmix {
      * @return
      * @throws SailoException
      */
-    public Collection<Drink> find(String searhCrit, int i) throws SailoException {
-        return drinks.find(searhCrit, i);
+    public Collection<Drink> find(String searhCrit) throws SailoException {
+        return drinks.find(searhCrit);
     }
     
     
